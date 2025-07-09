@@ -25,6 +25,21 @@ router.post("/register", async (req, res) => {
     return res.status(400).json({ message: "Username should be at least 3 characters long"});
   }
 
+  // if username has a space, error
+  if(username.includes(" ")){
+    return res.status(400).json({ message: "Username must not contain spaces"});
+  }
+
+  // basic email format regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    return res
+      .status(400)
+      .json({ message: "Please provide a valid email address" });
+  }
+
+
   //check if user already exists 
   const existingEmail = await User.findOne({ email });
   if (existingEmail) {

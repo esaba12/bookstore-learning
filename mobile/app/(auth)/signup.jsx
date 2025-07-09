@@ -12,7 +12,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { user, isLoading, register } = useAuthStore();
+  const { user, isLoading, register, token } = useAuthStore();
 
   const router = useRouter();
 
@@ -48,7 +48,7 @@ export default function Signup() {
                 />
                 <TextInput 
                   style={styles.input}
-                  placeholder="John Doe"
+                  placeholder="johndoe"
                   placeholderTextColor={COLORS.placeholderText}
                   value={username}
                   onChangeText={setUsername}
