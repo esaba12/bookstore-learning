@@ -92,7 +92,7 @@ export default function Signup() {
                 />
                 <TextInput 
                   style={styles.input}
-                  placeholder="••••••"
+                  placeholder="••••••••"
                   placeholderTextColor={COLORS.placeholderText}
                   value={password}
                   onChangeText={setPassword}
