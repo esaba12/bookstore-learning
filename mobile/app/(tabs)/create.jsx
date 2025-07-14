@@ -7,6 +7,7 @@ import COLORS from '../../constants/colors';
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
 import { useAuthStore } from '../../store/authStore';
+import { API_URL } from "../../constants/api";
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -57,7 +58,7 @@ export default function Create() {
       }
     } catch (error) {
       console.error("Error picking image:", error);
-      Alert.alter("Error", "There was a problem selecting your image");
+      Alert.alert("Error", "There was a problem selecting your image");
     }
   };
 
@@ -76,7 +77,7 @@ export default function Create() {
 
       const imageDataUrl = `data:${imageType};base64,${imageBase64}`;
 
-      const response = await fetch(`${API_URL}/api/books`, {
+      const response = await fetch(`${API_URL}/books`, {
         method:"POST",
         headers:{
           Authorization: `Bearer ${token}`,
@@ -132,7 +133,7 @@ export default function Create() {
   return (
     <KeyboardAvoidingView
     style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : height}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={styles.container} style={styles.scrollViewStyle}>
 
